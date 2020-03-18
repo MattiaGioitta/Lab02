@@ -23,6 +23,13 @@ public class Model {
 			if(this.controlWord(alienWord)==false) {
 				throw new InvalidParameterException("Inserisci parole con sole lettere!");
 				}
+			else if(ts.contains("?") && this.controlSpecialWors(alienWord)==false) {
+				throw new InvalidParameterException("Inserisci parole con sole lettere o con un solo '?'!");			
+			}
+			else if(ts.contains("?") && this.controlSpecialWors(alienWord)==true) {
+				return 2;
+			}
+			
 			return 1;
 		}
 		if(numWords==2) {
@@ -52,6 +59,22 @@ public class Model {
 	}
 	public AlienDictionary getDictionary() {
 		return dictionary;
+	}
+	public boolean controlSpecialWors(String toControl) {
+		int contatore=0;
+		int contatore1=0;
+		for(int i=0; i<toControl.length();i++) {
+			if(toControl.charAt(i)=='?') {
+				contatore++;
+			}
+			else if(Character.isLetter(toControl.charAt(i))==true) {
+				contatore1++;
+			}
+		}
+		if((contatore+contatore1)==toControl.length())
+			return true;
+		return false;
+		
 	}
 	
 	

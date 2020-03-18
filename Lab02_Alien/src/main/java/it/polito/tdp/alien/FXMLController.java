@@ -55,6 +55,10 @@ public class FXMLController {
     		txtResult.clear();
     		txtResult.appendText(this.model.getDictionary().translateWord(ts));
     	}
+    	else if(controllo==2) {
+    		txtResult.clear();
+    		
+    	}
     	
     	this.txtInserted.clear();
     	

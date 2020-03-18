@@ -36,5 +36,15 @@ public class AlienDictionary {
 		}
 		return null;
 	}
+	
+	public String translateWordSpecial(String alienWord) {
+		String s="";
+		for(WordEnhanced w : this.dictionary) {
+			if(w.getAlienWord().contains(alienWord)) {
+				s+=w.toString();				
+			}
+		}
+		return s;
+	}
 
 }
