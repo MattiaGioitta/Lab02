@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class AlienDictionary {
-	List<Word> dictionary;
+	List<WordEnhanced> dictionary;
 
 	/**
 	 * Costruttore per la creazione di un dizionario
@@ -16,21 +16,22 @@ public class AlienDictionary {
 	
 	
 	public void addWord(String alienWord, String translation) {
-		for(Word w : this.dictionary) {
-			if(w.getAlienWord().compareTo(alienWord)==0) {
-				w.setTranslation(translation);
+		WordEnhanced word= new WordEnhanced(alienWord);
+		for(WordEnhanced w : this.dictionary) {
+			if(w.equals(word)) {
+				w.getTranslation().add(translation);
 				return;
 			}
 		}
-		Word w= new Word(alienWord,translation);
-		this.dictionary.add(w);
+		word.getTranslation().add(translation);
+		this.dictionary.add(word);
 		
 	}
 	
 	public String translateWord(String alienWord) {
-		for(Word w : this.dictionary) {
+		for(WordEnhanced w : this.dictionary) {
 			if(w.getAlienWord().compareTo(alienWord)==0) {
-				return w.getTranslation();
+				return w.toString();
 			}
 		}
 		return null;
